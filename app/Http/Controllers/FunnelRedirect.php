@@ -18,6 +18,6 @@ class FunnelRedirect extends Controller
 
         $redirect_url = $response->body();
 
-        return $redirect_url;//redirect($redirect_url, 301);
+        return redirect($redirect_url, 301);
     }
 }

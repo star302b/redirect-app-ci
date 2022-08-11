@@ -10,10 +10,12 @@ class FunnelRedirect extends Controller
 {
     public function index($funnel_hash){
         $redirect_url = '';
-        $funnel_name = base64_decode($funnel_hash);
+        $hash_string =  base64_decode($funnel_hash);;
+        $hash_string = explode('/',$hash_string);
 
         $response = Http::post(env('APP_LINK_GENERATOR'), [
-            'funnel' => $funnel_name,
+            'funnel' => $hash_string[0],
+            'iso'=> $hash_string[1]
         ]);
 
         $redirect_url = $response->body();
